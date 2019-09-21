@@ -1,0 +1,19 @@
+package prvipaket;
+import java.util.Scanner;
+public class domaci {
+
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		int n;
+		n=sc.nextInt();
+		 if (n==1){System.out.println("do vikenda je ostalo cak pet dana");
+		}
+		 else if(n==2) {System.out.println("do vikenda je ostalo cak  cetiri dana");}
+		 else if(n==3) {System.out.println("do vikenda je ostalo  tri dana");}
+		 else if(n==4){System.out.println("do { vikenda je ostalo dva dana");}
+		 else if(n==5){System.out.println("do vikenda je ostao jedan dan");}
+		 else if(n==6){System.out.println("Subota konacno");}
+		 
+	}
+
+		

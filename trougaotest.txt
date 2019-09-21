@@ -1,0 +1,27 @@
+package cetvrtaSedmica;
+
+public class trougaoTest {
+
+	public static void main(String[] args) {
+double[][] a = new double[10][2];
+		
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < a[i].length; j++) {
+				a[i][j] = Math.random()*20;
+			}
+		}
+		
+		Trougao A = new Trougao(2, 4, 3, a[0][0], a[0][1]);
+		Trougao B = new Trougao(5, 7, 9, a[1][0], a[1][1]);
+		Trougao C = new Trougao(-1, 4, 5, a[2][0], a[2][1]);
+		
+		A.ispis();
+		B.jednakokraki();
+		C.ispis();
+		
+		Trougao D = new Trougao(8, 4, 5, a[0][0], a[0][1]);
+		
+		System.out.print(D.istaPocetnaTacka(A));
+	}
+
+}

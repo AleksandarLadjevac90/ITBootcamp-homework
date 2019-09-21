@@ -1,0 +1,47 @@
+package energija;
+
+public class Meni {
+	
+	public Namirnica[] niz;
+	private int brNam;
+	
+	Meni(int brNam){
+		this.brNam = brNam;
+		niz = new Namirnica[brNam];
+	}
+	
+	public boolean dodaj(Namirnica X) {
+		int n = 0;
+
+		while (n < this.niz.length && this.niz[n] != null) {
+			n++;
+		}
+		if (n == this.niz.length) {
+			return false;
+		} else {
+			niz[n] = X;
+			return true;
+		}
+	}
+	
+	public double energVr() {
+		int n = 0;
+		int sum = 0;
+		while (n < niz.length && niz[n] != null) {
+			sum += niz[n].energVr();
+			n++;
+		}
+		return sum;
+	}
+	
+	public String toString() {
+		String s = "Meni (" + energVr() + "kJ):\n";
+		int n = 0;
+		while (n < niz.length && niz[n] != null) {
+			s += niz[n].toString() + "\n";
+			n++;
+		}
+		return s;
+	}
+	
+}

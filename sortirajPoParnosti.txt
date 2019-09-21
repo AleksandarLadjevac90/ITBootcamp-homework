@@ -1,0 +1,78 @@
+package CetvrtiDan;
+import java.util.Scanner;
+public class Brk {
+
+	public static void main(String[] args) {
+    Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Unesite velicinu niza A:");
+		int n = scan.nextInt();
+		int[] A = new int[n];
+		
+		for (int i = 0; i < A.length; i++) {
+			System.out.println("Unesite A[" + i + "]:");
+			A[i] = scan.nextInt();
+		}
+		System.out.println("============================");
+		
+		A = sortirajPoParnosti(A);
+		
+		System.out.println("Sortiran niz:");
+		for(int i = 0; i < A.length; i++) {
+			System.out.print(A[i] + "  ||  ");
+		}
+	}
+	
+	public static int[] sortirajPoParnosti(int[] a) {
+		
+		int counter = 0;
+		int temp = 0;
+		
+		for(int i = 0; i < a.length; i++) {
+			if (a[i]%2 == 0) {
+				temp = a[counter];
+				a[counter] = a[i];
+				a[i] = temp;
+				counter++;
+			}
+		}
+		
+		int index = -1; 
+		
+		for(int i = 0; i < counter; i++) {
+			
+			int max = a[i];
+			for(int j = i; j < counter; j++) {
+				if (max < a[j]) {
+					max = a[j];
+					index = j;
+				}
+			}
+			if(max != a[i]) {
+				temp = a[i];
+				a[i] = max;
+				a[index] = temp;
+			}
+		}
+		
+		for(int i = counter; i < a.length; i++) {
+			
+			int max = a[i];
+			for(int j = i; j < a.length; j++) {
+				if (max < a[j]) {
+					max = a[j];
+					index = j;
+				}
+			}
+			if(max != a[i]) {
+				temp = a[i];
+				a[i] = max;
+				a[index] = temp;
+			}
+		}
+		
+		return a;
+		
+	}
+	
+}

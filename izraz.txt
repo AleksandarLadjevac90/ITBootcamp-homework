@@ -1,0 +1,6 @@
+package aritmetika;
+
+public abstract class Izraz {
+	
+	abstract double izracunaj();
+}

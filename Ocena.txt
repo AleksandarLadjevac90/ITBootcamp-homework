@@ -1,0 +1,42 @@
+package fakultet;
+
+public class Ocena {
+	
+	private int bodovi;
+	private Predmet pr;
+	
+	Ocena(int bodovi, Predmet pr){
+		
+		if (bodovi < 0 && bodovi > 50) {
+			System.out.println();
+		}
+		
+		this.bodovi = bodovi;
+		this.pr = pr;
+	}
+	
+	public String ispis() {
+		return "Predmet: " + this.pr.getIme() + ", Ocena: " + Integer.toString(this.getOcena());
+	}
+
+	public int getOcena() {
+		if (this.bodovi <= 10) {
+			return 1;
+		} else if (this.bodovi <= 20) {
+			return 2;
+		} else if (this.bodovi <= 30) {
+			return 3;
+		} else if (this.bodovi <= 40) {
+			return 4;
+		} else {
+			return 5;
+		}
+	}
+	
+	public int getBodovi() {
+		return bodovi;
+	}
+	public Predmet getPr() {
+		return pr;
+	}
+}

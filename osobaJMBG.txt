@@ -1,0 +1,45 @@
+package noviPaket;
+
+public class OsobaJMBG extends OsobaD{
+	
+	private String JMBG;
+	
+	public OsobaJMBG(String ime, String prezime, String adresa, Datum datum) {
+		super(ime, prezime, adresa, datum);
+		
+		if(this.getDatum().getDan() < 10) {
+			JMBG += "0";
+		}
+		JMBG = Integer.toString(this.getDatum().getDan());
+		if(this.getDatum().getMesec() < 10) {
+			JMBG += "0";
+		}
+		JMBG += Integer.toString(this.getDatum().getMesec());
+				
+		String s = Integer.toString(this.getDatum().getGodina());
+		for(int i = 1; i < s.length(); i++) {
+			JMBG += s.charAt(i);
+		}
+		
+		for(int i = 0; i < 6; i++) {
+			JMBG += Long.toString(Math.round(Math.random()*9));
+		}
+	}
+	
+	OsobaJMBG(OsobaJMBG x) {
+		super(x);
+		this.JMBG = x.JMBG;
+	}
+	
+	public String toString() {
+		return super.toString() + "| JMBG: " + this.JMBG;
+	}
+
+	public String getJMBG() {
+		return JMBG;
+	}
+
+	public void setJMBG(String jMBG) {
+		JMBG = jMBG;
+	}
+}

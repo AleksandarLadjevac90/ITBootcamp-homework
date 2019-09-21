@@ -1,0 +1,58 @@
+package sedmaSedmica;
+
+public class Prodavnica {
+	private String imeProdavnice;
+	private Artikal[] artikli;
+	private int brArtikala;
+	public Prodavnica(String imeProdavnice) {
+		this.imeProdavnice = imeProdavnice;
+		artikli = new Artikal[5];
+		brArtikala = 0;
+	}
+	public void dodajArtikal(Artikal a) {
+		if(brArtikala < artikli.length) {
+			artikli[brArtikala] = a;
+		} else {
+			Artikal[] n = new Artikal[artikli.length*2];
+			for(int i = 0; i < artikli.length; i++) {
+				n[i] = artikli[i];
+			}
+			artikli = n;
+			artikli[brArtikala] = a;
+		}
+		brArtikala++;
+	}
+	public String toString() {
+		String s = "";
+		for(int i = 0; i < brArtikala; i++) {
+			s += artikli[i].toString() + "\n";
+		}
+		return s;
+	}
+	public String artikliNaPopustu() {
+		String s = "";
+		for(int i = 0; i < brArtikala; i++) {
+			if(artikli[i].daLiJeNaAkciji() == true) {
+				s += artikli[i].getIme() + " - " + Double.toString(artikli[i].getCenaSaPopustom()) +
+				" din " + "(" + Integer.toString(artikli[i].getBroj()) + ") - " + Integer.toString(artikli[i].getPopust())
+				+ "%\n";
+			}
+		}
+		return s;
+	}
+	
+	
+	public String getImeProdavnice() {
+		return imeProdavnice;
+	}
+	public void setImeProdavnice(String imeProdavnice) {
+		this.imeProdavnice = imeProdavnice;
+	}
+	public Artikal[] getArtikli() {
+		return artikli;
+	}
+	public int getBrArtikala() {
+		return brArtikala;
+	}
+	
+}

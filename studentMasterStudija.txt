@@ -1,0 +1,18 @@
+package PetaSedmica;
+
+public class StudentMasterStudija extends Student{
+	
+	private String smerMasterStudija;
+	
+	StudentMasterStudija(String ime, String prezime, int godinaRodjenja, 
+			int trenutnaGodStudija, double trenutniProsek , String sMs){
+		super(ime, prezime, godinaRodjenja, trenutnaGodStudija, trenutniProsek);
+		this.smerMasterStudija = sMs;
+	}
+	
+	public String toString() {
+		String s = super.toString();
+		s += "Smer Master Studija: " + this.smerMasterStudija + "\n";
+		return s;
+	}
+}

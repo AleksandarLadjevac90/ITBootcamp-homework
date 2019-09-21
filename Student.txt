@@ -1,0 +1,127 @@
+package fakultet;
+
+public class Student {
+
+	private String potpis;
+	private String jmbg;
+	private Ocena[] upisaneOcene;
+	private int ocenaBrojac;
+	
+	Student(String potpis, String jmbg){
+		this.potpis = potpis;
+		this.jmbg = jmbg;
+		for(int i = 0; i < 6; i++) {
+			jmbg += Integer.toString((int)(Math.random()*9));
+		}
+		upisaneOcene = new Ocena[10];
+	}
+	
+	public void dodajOcenu(Ocena A) {
+		if(ocenaBrojac < upisaneOcene.length - 1) {
+			upisaneOcene[ocenaBrojac] = A;
+			ocenaBrojac++;
+		} else {
+			Ocena[] noviNiz = new Ocena[upisaneOcene.length*2];
+			for(int i = 0; i < upisaneOcene.length; i++) {
+				noviNiz[i] = upisaneOcene[i];
+			}
+			upisaneOcene = noviNiz;
+			noviNiz = null;
+			upisaneOcene[ocenaBrojac] = A;
+			ocenaBrojac++;
+		}
+	}
+	
+	public double getProsecnaOcena() {
+		if(ocenaBrojac > 0) {
+			int sum = 0;
+			for(int i = 0; i < ocenaBrojac; i++) {
+				sum += upisaneOcene[i].getOcena();
+			}
+			return (double)sum/ocenaBrojac;
+		} else {
+			System.err.println("Njedna ocena nije unesena!");
+			return -666;
+		}
+	}
+	
+	public String getDatumRodjenja() {
+		String s = "";
+		for(int i = 0; i < 7; i++) {
+			
+			if(i == 4 && this.jmbg.charAt(i) != ('0')) {
+				s += "1";
+			} else if (i == 4 && this.jmbg.charAt(i) == ('0')){
+				s += "2";
+			}
+			s += this.jmbg.charAt(i);
+			if(i == 1 || i == 3) {
+				s += "/";
+			}
+		}
+		return s;
+	}
+	
+	public String getIme() {
+		return this.potpis.split(" ")[0];
+	}
+	
+	public String getPrezime() {
+		return this.potpis.split(" ")[1];
+	}
+	
+	public String najboljaOcena() {
+		int max = 0;
+		int index = -1;
+		for(int i = 0; i < ocenaBrojac; i++) {
+			if (upisaneOcene[i].getBodovi() > max) {
+				max = upisaneOcene[i].getBodovi();
+				index = i;
+			}
+		}
+		return upisaneOcene[index].getPr().getIme();
+	}
+	
+	public static boolean starijiOd(Student A, int god) {
+		int s = Integer.parseInt(A.getDatumRodjenja().split("/")[2]);
+		if (s < god) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static Student[] prosekVeciOd(Student[] nizStudenata, double ocena) {
+		
+		int n = 0;
+		for(int i = 0; i < nizStudenata.length; i++) {
+			if (nizStudenata[i].getProsecnaOcena() > ocena) {
+				n++;
+			}
+		}
+		
+		Student[] noviNiz = new Student[n];
+		
+		for(int i = 0; i < nizStudenata.length; i++) {
+			if (nizStudenata[i].getProsecnaOcena() > ocena) {
+				noviNiz[i] = nizStudenata[i];
+			}
+		}
+		
+		return noviNiz;
+	}
+	
+	//Getters and Setters
+	public String getPotpis() {
+		return potpis;
+	}
+	public String getJmbg() {
+		return jmbg;
+	}
+	public void setPotpis(String potpis) {
+		this.potpis = potpis;
+	}
+	public void setJmbg(String jmbg) {
+		this.jmbg = jmbg;
+	}
+}

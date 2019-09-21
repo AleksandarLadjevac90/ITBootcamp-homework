@@ -1,0 +1,125 @@
+package paket;
+
+import java.util.Scanner;
+
+public class alkohol {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Dobrodosli u alko aproksimator!");
+		System.out.print("Unesite vasu tezinu u kilogramima: ");
+		double tezina = scan.nextDouble();
+		tezina *= 1000;
+		System.out.print("Unesite vas pol (ako ste musko unesite 1, ako ste zensko unesite 0): ");
+		int pol = scan.nextInt();
+		System.out.println("=======================================================================");
+		System.out.println("");
+		double factor = 0;
+		if (pol == 1) {
+			factor = 0.55;
+		} else {
+			factor = 0.68;
+		}
+		
+		System.out.println("ID-jevi pica:");
+		System.out.println("(1) Rakija");
+		System.out.println("(2) Vinjak");
+		System.out.println("(3) Pivo");
+		System.out.println("(4) Vino");
+		System.out.println("");
+		System.out.println("-----------------------------------------------------------------------");
+		System.out.println("");
+		
+		boolean out = false;
+		double mili = 0;
+		
+		while (out == false) {
+			System.out.print("Unesite id pica koje ste pili ili -1 ako ste vec uneli sva pica koja ste pili: ");
+			int id = scan.nextInt();
+			switch (id) {
+				case 1:
+					System.out.print("Unesite koliko mililitara(ml) tog pica ste popili: ");
+					int R = scan.nextInt();
+					System.out.println("");
+					mili += R*(0.5);
+					break;
+				case 2:
+					System.out.print("Unesite koliko mililitara(ml) tog pica ste popili: ");
+					int V = scan.nextInt();
+					System.out.println("");
+					mili += V*(0.4);
+					break;
+				case 3:
+					System.out.print("Unesite koliko mililitara(ml) tog pica ste popili: ");
+					int P = scan.nextInt();
+					System.out.println("");
+					mili += P*(0.047);
+					break;
+				case 4:
+					System.out.print("Unesite koliko mililitara(ml) tog pica ste popili: ");
+					int Vi = scan.nextInt();
+					System.out.println("");
+					mili += Vi*(0.047);
+					break;
+				case -1:
+					out = true;
+					break;
+				default:
+					System.out.println("\nGreska u unosu. Probajte ponovo:");
+					break;
+			}
+		}
+		
+		double BAC = (mili*1000)/(tezina*factor);
+		BAC = Math.round(BAC*100.0)/100.0;
+		
+		String stanje = "";
+		String kazna = "";
+		int kPoeni = 0;
+		int zabrana = 0;
+		
+		if (BAC <= 0.20) {
+			stanje = "Dozvoljena alkoholisanost";
+			kazna = "bez kazne";
+			kPoeni = 0;
+			zabrana = 0;
+		} else if (BAC <= 0.5) {
+			stanje = "Umerana alkoholisanost";
+			kazna = "10.000 dinara";
+			kPoeni = 0;
+			zabrana = 0;
+		} else if (BAC <= 0.8) {
+			stanje = "Srednja alkoholisanost";
+			kazna = "10.000 - 20.000 dinara";
+			kPoeni = 6;
+			zabrana = 3;
+		} else if (BAC <= 1.2) {
+			stanje = "Visoka alkoholisanost";
+			kazna = "20.000 - 40.000 dinara";
+			kPoeni = 8;
+			zabrana = 4;
+		} else if (BAC <= 1.6) {
+			stanje = "Teska alkoholisanost";
+			kazna = "100.000 - 120.000 dinara";
+			kPoeni = 9;
+			zabrana = 8;
+		} else if (BAC <= 2.0) {
+			stanje = "Visoka alkoholisanost";
+			kazna = "100.000 - 120.000 dinara";
+			kPoeni = 14;
+			zabrana = 8;
+		} else if (BAC > 2.0) {
+			stanje = "Potpuna alkoholisanost";
+			kazna = "30-60 dana zatvora";
+			kPoeni = 15;
+			zabrana = 9;
+		}
+		
+		System.out.println("\n---------------------------------");
+		System.out.println("BAC: " + BAC + " - " + stanje);
+		System.out.println("---------------------------------");
+		System.out.println("Kazna: " + kazna);
+		System.out.println("Kazneni poeni: " + kPoeni);
+		System.out.println("Zabrana voznje: " + zabrana + " meseci");	
+	}
+}

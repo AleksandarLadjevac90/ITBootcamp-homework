@@ -1,0 +1,76 @@
+package noviPaket;
+
+public class OsobaD extends Osoba{
+	private Datum datum;
+
+	public OsobaD(String ime, String prezime, String adresa, Datum datum) {
+		super(ime, prezime, adresa);
+		this.datum=datum;
+	}
+
+	OsobaD(OsobaD x) {
+		super(x);
+		this.datum = x.datum;
+	}
+	
+	public String toString() {
+		return super.toString() + "| Datum rodjenja: " + this.datum.toString();
+	}
+	
+	public Datum getDatum() {
+		return datum;
+	}
+
+	public void setDatum(Datum datum) {
+		this.datum = datum;
+	}
+
+	public int numeroloskiBroj() {
+		String s = Integer.toString(this.datum.getDan()) + Integer.toString(this.datum.getGodina())
+			+ Integer.toString(this.datum.getMesec());
+		int numBr = 0;
+		
+		do {
+			numBr = 0;
+			for(int i = 0; i < s.length(); i++) {
+				numBr += Character.getNumericValue(s.charAt(i));
+			}
+			s = Integer.toString(numBr);
+		} while (numBr > 10);
+		
+		return numBr;
+		
+	}
+
+	String metabolizam(final Datum d) {
+		String s = this.datum.toString();
+		String temp = "";
+		String s1 = d.toString();
+		String temp1 = "";
+		
+		for(int i = 0; i < s.length(); i++) {
+			if(s.charAt(i) != '.') {
+				temp += s.charAt(i);
+			}
+			if(s1.charAt(i) != '.') {
+				temp1 += s1.charAt(i);
+			}
+		}
+		
+		String rezultat = Integer.toString(Integer.parseInt(temp) + Integer.parseInt(temp1));
+		String r = "";
+		
+		if(rezultat.length() < 8) {
+			int m = 8 - rezultat.length();
+			
+			for(int i = 0; i < m; i++) {
+				r += "0";
+			}
+			
+			r += rezultat;
+			return r;
+		} else {
+			return rezultat;
+		}
+	}
+}

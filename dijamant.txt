@@ -1,0 +1,45 @@
+package zaDomace;
+
+import java.util.Scanner;
+
+public class dijamant {
+
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		
+		f(13);
+	}
+	
+	static void f(int N) {
+		
+		String empty = " ";
+		String zvezdica = "*";
+		
+		for (int i = 0; i < N; i++) {
+			
+			for (int j = 0; j < (N-1-i); j++) {
+				System.out.print(empty);
+			}
+			
+			for (int z = 0; z <= i*2; z++) {
+				System.out.print(zvezdica);
+			}
+			
+			System.out.println("");
+		}
+		
+		for (int i = (N-1); i > 0; i--) {
+			
+			for (int j = 0; j <= (N-1-i); j++) {
+				System.out.print(empty);
+			}
+			
+			for (int z = 0; z < i*2 - 1; z++) {
+				System.out.print(zvezdica);
+			}
+			
+			System.out.println("");
+		}
+	}
+
+}

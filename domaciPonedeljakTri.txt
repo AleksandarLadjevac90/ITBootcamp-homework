@@ -1,0 +1,64 @@
+package paket;
+
+import java.util.Scanner;
+
+public class nizdomaciTri {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int[] a = {1,5,7,8,97,123,145};
+		
+		System.out.println("Aritmeticka sredina niza: " + aritmetickaSredina(a));
+		System.out.println("Medijana niza: " + medijana(a));
+		
+	}
+
+	static float aritmetickaSredina(int[] a) {
+		
+		float sum = 0;
+		for (int i = 0; i < a.length; i++) {
+			sum += a[i];
+		}
+		
+		return sum/a.length;
+	}
+	
+	static int medijana(int[] a) {
+		
+		int medijana;
+		sort(a);
+		
+		if (a.length%2 != 0) {
+			return a[(a.length - 1)/2];
+		} else {
+			medijana = (a[a.length/2 - 1 ] + a[a.length/2])/2;
+			return medijana;
+		}
+	}
+	
+	static int[] sort(int[] a) {
+		
+		int index = 0;
+		int temp = 0;
+		
+		for (int i = 0; i < a.length; i++) {
+			
+			int min = a[i];
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[j] > min) {
+					min = a[j];
+					index = j;
+				}
+			}
+			
+			if (min != a[i]) {
+				temp = a[i];
+				a[i] = min;
+				a[index] = temp;
+			}
+		}
+		
+		return a;
+	}
+}

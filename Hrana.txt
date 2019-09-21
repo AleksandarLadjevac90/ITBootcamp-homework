@@ -1,0 +1,47 @@
+package energija;
+
+public class Hrana extends Namirnica{
+	
+	private double tezina;
+	private double belancevine;
+	private double masti;
+	private double ugljHidrati;
+	
+	Hrana(String ime, double a, double b, double c, double d) {
+		super(ime);
+		if((b+c+d) < 100) {
+			this.tezina = a;
+			this.belancevine = b;
+			this.masti = c;
+			this.ugljHidrati = d;
+		} else {
+			System.out.println("GRESKA\nPogresan unos.");
+		}
+	}
+
+
+	public double energVr() {
+		double b = (this.belancevine/100)*this.tezina*16.7;
+		double m = (this.masti/100)*this.tezina*37.6;
+		double uh = (this.ugljHidrati/100)*this.tezina*17.2;
+		return b + m + uh;
+	}
+	
+	public double getTezina() {
+		return tezina;
+	}
+	public double getBelancevine() {
+		return belancevine;
+	}
+	public double getMasti() {
+		return masti;
+	}
+	public double getUgljHidrati() {
+		return ugljHidrati;
+	}
+	public String toString() {
+		String s = super.toString();
+		s += "(" + this.tezina + "g, " + energVr() + "kJ)";
+		return s;
+	}
+}

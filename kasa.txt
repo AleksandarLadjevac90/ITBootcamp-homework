@@ -1,0 +1,71 @@
+package prvipaket;
+import java.util.Scanner;
+public class domaci {
+
+public static void main (String args[]) {
+	Scanner scan = new Scanner(System.in);
+	
+	float cena = 0;
+	int kolicina = 0;
+	int sum = 0;
+	int kusur = 0;
+	float pare = 0;
+	
+	for (int i = 1; cena >= 0; i++) {
+		
+		if (i == 1) {
+			System.out.println("Unesite cenu " + i + ". proizvoda:");
+		} else {
+			System.out.println("Unesite cenu " + i + ". proizvoda ili (-1) ako nema vise proizvoda:");
+		}
+
+		cena = scan.nextFloat();
+		
+		if (cena < 0) {
+			break;
+		}
+	
+		System.out.println("Unesite kolicinu " + i + ". proizvoda:");
+		kolicina = scan.nextInt();
+		
+		sum += Math.round(kolicina*cena);
+	}
+	
+	System.out.println("=================================");
+	System.out.println("Koliko novca vam je kupac dao?");
+	
+	pare = scan.nextFloat();
+	kusur = Math.round(pare) - sum;
+	
+	if (kusur >= 0) {
+		System.out.println("=================================");
+		System.out.println("---------Uspesna prodaja!--------");
+		System.out.println("Ukupna cena proizvoda je: " + sum);
+		System.out.println("Kusur: " + kusur);
+	} else {
+		System.out.println("=================================");
+		System.out.println("Kupac nema dovoljno sredstava da izvrsi kupovinu....");
+		System.out.println("Cena kupovine: " + sum);
+		System.out.println("Kupceva sredstva: " + Math.round(pare));
+	}
+	
+	int pet = 0, dva = 0, jedan = 0;
+	
+	if (kusur >= 5) {
+		pet = kusur / 5;
+		dva = (kusur%5) / 2;
+		jedan = (kusur%5) - dva*2;
+	} else {
+		dva = kusur/2;
+		jedan = kusur - dva*2;
+	}
+	
+	System.out.println("=================================");
+	System.out.println("Da biste vratili najmanji broj kovanica potrebno je:");
+	System.out.println(jedan + " od 1din");
+	System.out.println(dva + " od 2din");
+	System.out.println(pet + " od 5din");
+	
+}
+
+}

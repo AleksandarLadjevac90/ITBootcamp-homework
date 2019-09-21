@@ -1,0 +1,34 @@
+package zaDomace;
+
+public class funkcijaTrougao {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		f(15);
+	}
+	
+	static void f(int N) {
+		
+		String c = "*";
+		String empty = " ";
+		
+		for (int i = 0, n = N; i < N; i++, n--) {
+			
+			for (int j = 1; j < n; j++) {
+				System.out.print(empty);
+			}
+			
+			for (int z = 0; z <= i; z++) {
+				System.out.print(c);
+			}
+			
+			System.out.print(" ");
+			for (int z = 0; z <= i; z++) {
+				System.out.print(c);
+			}
+			
+			System.out.println("");
+		}
+	}
+
+}

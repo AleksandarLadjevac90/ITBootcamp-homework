@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Ladjevac/Downloads/Fakultet (3).db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="3863"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Raspored"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Kurs" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Odsek" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Pohadja" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Preduslov" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Profesor" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Raspored" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort><column index="7" mode="1"/></sort><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Student" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Ucionica" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">SELECT
+Odsek.Naziv as 'Naziv Kursa', count(Kurs.SifO) as 'Broj Odseka'
+FROM
+Odsek
+JOIN Kurs ON Odsek.SifO = Kurs.SifO
+GROUP BY Odsek.Naziv
+-- zad. br 1.</sql><sql name="SQL 2">SELECT Kurs.Naziv, count(Pohadja.SifS) as 'Broj Studenata'
+FROM
+Kurs
+JOIN Raspored ON Raspored.SifK = Kurs.SifK
+JOIN Pohadja ON Raspored.SifR = Pohadja.SifR
+GROUP BY Kurs.Naziv
+HAVING count(Pohadja.SifS) &gt; 3
+--zad. br 2.</sql><sql name="SQL 3"></sql><sql name="SQL 4">SELECT Kurs.Naziv
+FROM
+Kurs
+JOIN Raspored ON Raspored.SifK = Kurs.SifK
+JOIN Pohadja ON Raspored.SifR = Pohadja.SifR
+WHERE Pohadja.SifS = 1;
+--zad. br 4.</sql><sql name="SQL 5">SELECT Student.Ime, count(Raspored.SifK) as 'Broj predmeta koji pohadja'
+FROM
+Raspored
+JOIN Pohadja ON Raspored.SifR = Pohadja.SifR
+JOIN Student ON Student.SifS = Pohadja.SifS
+GROUP BY Student.Ime
+HAVING count(Raspored.SifK) &gt; 2
+--zad br 5.</sql><sql name="SQL 6">SELECT DISTINCT Student.Ime
+FROM 
+Raspored
+JOIN Pohadja ON Raspored.SifR = Pohadja.SifR
+JOIN Student ON Student.SifS = Pohadja.SifS
+WHERE
+Raspored.SifU = 111 AND
+Raspored.Dan = 'Pon'
+--zad br 6</sql><sql name="SQL 8">SELECT Kurs.Naziv, MAX(Raspored.BrPrijaveljenih)
+FROM
+Kurs
+JOIN Raspored ON Raspored.SifK = Kurs.SifK
+JOIN Pohadja ON Raspored.SifR = Pohadja.SifR
+WHERE Raspored.SifP = 7
+GROUP BY Kurs.Naziv
+zad. br 7</sql><sql name="SQL 9">SELECT Kurs.Naziv as 'Preduslov Kurs'
+FROM Preduslov
+JOIN Kurs ON Preduslov.SifKP = Kurs.SifK
+WHERE Preduslov.SifK = 4
+--zad. br 8.</sql><sql name="SQL 10">select Kurs.Naziv, count(Preduslov.SifKP) as &quot;broj predmeta koji su preduslov&quot;
+from Preduslov
+JOIN Kurs ON Preduslov.SifK = Kurs.SifK
+GROUP BY Preduslov.SifK
+--zad. br. 8</sql><sql name="SQL 11">select Profesor.Ime, sum(Raspored.BrPrijaveljenih) as 'broj studenata'
+from Raspored
+join Profesor On Profesor.SifP = Raspored.SifP
+where Raspored.Dan=&quot;Pon&quot;
+group by Profesor.Ime
+--zad. br. 9</sql><current_tab id="9"/></tab_sql></sqlb_project>

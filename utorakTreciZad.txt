@@ -1,0 +1,59 @@
+package paket;
+
+import java.util.Scanner;
+
+public class domacinizUto {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int[] a;
+		System.out.println("Unesite broj elemenata niza: ");
+		int n = scan.nextInt();
+		a = new int[n];
+		
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("Unesite a[" + i + "]: ");
+			a[i] = scan.nextInt();
+		}
+		
+		float sv = aritmetickaSredina(a);
+		System.out.println("Srednja vrednost niza je " + (int)sv);
+		System.out.println("Brojevi koji su veci od srednje vrednosti niza: ");
+		
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] > sv) {
+				System.out.println(a[i]);
+			}
+		}
+		
+		int m = a[minDaljina(a, sv)];
+		
+		System.out.println("Broj koji je najmanje udaljen od Aritmeticke sredine je " + m);
+	}
+	
+	static float aritmetickaSredina(int[] a) {
+		
+		float sum = 0;
+		for (int i = 0; i < a.length; i++) {
+			sum += a[i];
+		}
+		
+		return sum/a.length;
+	}
+	
+	static int minDaljina(int[] a, float sv) {
+		
+		float min = Math.abs(sv - a[0]);
+		int index = 0;
+		for (int i = 0; i < a.length; i++) {
+			
+			if (min > Math.abs(sv - a[i])) {
+				min = Math.abs(sv - a[i]);
+				index = i;
+			}
+		}
+		
+		return index;
+	}
+}

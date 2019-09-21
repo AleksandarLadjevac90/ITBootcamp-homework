@@ -1,0 +1,25 @@
+package energija;
+
+public abstract class Namirnica extends Energent{
+	
+	private String ime;
+	private int id;
+	private static int n = 0;
+	
+	Namirnica(String ime){
+		n++;
+		this.ime = ime;
+		this.id = n;
+	}
+	
+	public String getIme() {
+		return ime;
+	}
+	public int getId() {
+		return id;
+	}
+	public String toString() {
+		String s = "[" + this.id + "] " + this.ime;
+		return s;
+	}
+}

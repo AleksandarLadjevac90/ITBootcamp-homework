@@ -1,0 +1,20 @@
+package sedmaSedmica;
+
+public class ReceptTorta {
+	private Sastojak[] nizSastojaka;
+	private int nivoTezine;
+	
+	public ReceptTorta(Sastojak[] nizSastojaka, int nivoTezine) {
+		super();
+		this.nizSastojaka = nizSastojaka;
+		this.nivoTezine = nivoTezine;
+		
+		
+	}
+	
+	public String tezinaRecepta() {
+	
+		
+	}
+
+}

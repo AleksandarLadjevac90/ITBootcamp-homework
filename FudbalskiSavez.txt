@@ -1,0 +1,71 @@
+import java.sql.*;
+
+public class FudbalskiSavez {
+	String connectionString;
+	Connection con;
+	
+	public FudbalskiSavez(String connectionString) {
+		this.connectionString = connectionString;
+	}
+	
+	public void connect() {
+		try {
+			con = DriverManager.getConnection(connectionString);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void disconnect() {
+		try {
+			if (con != null && !con.isClosed()) {
+				con.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void imeFudbaleraTim() throws SQLException {
+		String upit = "SELECT Fudbaler.Ime, Tim.Naziv FROM Fudbaler JOIN Tim ON Fudbaler.IdTim = Tim.IdTim";
+
+		Statement statement = con.createStatement();
+		ResultSet resultSet = statement.executeQuery(upit);
+		
+		if (!resultSet.isBeforeFirst()) {
+			System.out.println("Nema rezultata");
+			return;
+		}
+		
+		do {
+			String imeFudbalera = resultSet.getString("Ime");
+			String nazivTima = resultSet.getString("Naziv");
+			System.out.println(imeFudbalera.concat(" - ").concat(nazivTima));
+		} while(resultSet.next());
+	}
+	
+	public void gradoviGdeJeIgraoFudbaler(Integer IdFudbalera) throws SQLException {
+		String upit = "SELECT Tim.Mesto as `Domacin`"
+				+ " FROM Fudbaler"
+				+ " JOIN Igrao ON Fudbaler.IdFud = Igrao.IdFud"
+				+ " JOIN Utakmica ON Igrao.IdUta = Utakmica.IdUta"
+				+ " JOIN Tim ON Utakmica.IdDomacin = Tim.IdTim"
+				+ " WHERE Fudbaler.IdFud = ?"
+				+ " AND Utakmica.IdDomacin = Fudbaler.IdTim";
+		
+		PreparedStatement statement = con.prepareStatement(upit);
+		
+		statement.setInt(1, IdFudbalera);
+		
+		ResultSet resultSet = statement.executeQuery();
+		
+		if (!resultSet.isBeforeFirst()) {
+			System.out.println("Nema rezultata");
+			return;
+		}
+		
+		do {
+			String mestoDomacin = resultSet.getString(1);
+			System.out.println(mestoDomacin);
+		} while(resultSet.next());
+	}
+}

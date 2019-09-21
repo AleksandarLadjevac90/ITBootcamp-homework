@@ -1,0 +1,49 @@
+package noviPaket;
+
+public class Datum {
+	private int dan;
+	private int mesec;
+	private int godina;
+	
+	public Datum(int dan, int mesec, int godina) {
+		super();
+		this.dan = dan;
+		this.mesec = mesec;
+		this.godina = godina;
+	}
+	
+	Datum(Datum x) {
+		this.dan = x.dan;
+		this.mesec = x.mesec;
+		this.godina = x.godina;
+	}
+
+	public int getDan() {
+		return dan;
+	}
+
+	public int getMesec() {
+		return mesec;
+	}
+
+	public int getGodina() {
+		return godina;
+	}
+
+	public void setDan(int dan) {
+		this.dan = dan;
+	}
+
+	public void setMesec(int mesec) {
+		this.mesec = mesec;
+	}
+
+	public void setGodina(int godina) {
+		this.godina = godina;
+	}
+	
+	public String toString() {
+		return Integer.toString(this.dan) + "." + Integer.toString(this.mesec) + "."
+				+ Integer.toString(this.godina) + ".";
+	}
+}

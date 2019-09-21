@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Ladjevac/Downloads/studentskabaza.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2203"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="predmet"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="automobili" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="dosije" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="ispit" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="ispitni_rok" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="predmet" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths><column index="3" value="194"/></column_widths><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">select *
+from predmet
+--zad. br 1.</sql><sql name="SQL 2">select * 
+from dosije
+where mesto_rodjenja=&quot;Beograd&quot;
+--zad br 2.</sql><sql name="SQL 3">select mesto_rodjenja
+from dosije
+--zad. br 3.</sql><sql name="SQL 4">SELECT ocena
+from ispit
+where ocena&gt;6
+--zad. br 4.</sql><sql name="SQL 5">SELECT id_predmeta, sifra
+FROM  predmet
+where predmet.bodovi BETWEEN 8 and 15
+--zad. br 5.</sql><sql name="SQL 6">select bodovi
+FROM ispit
+where bodovi in (81, 59, 76)
+--zad. br 6.</sql><sql name="SQL 8">select bodovi
+FROM ispit
+where bodovi  NOT in(81, 59, 76)
+--zad. br 7.</sql><sql name="SQL 9">SELECT naziv, bodovi*(1500) as 'cena'
+from predmet
+--zad br 8.</sql><sql name="SQL 10">SELECT 
+predmet.naziv as 'naziv',
+predmet.bodovi * 1500 as 'cena'
+FROM 
+predmet;
+--zad br 9</sql><sql name="SQL 11">SELECT
+*
+FROM predmet
+ORDER BY predmet.bodovi ASC;
+
+SELECT
+*
+FROM predmet
+ORDER BY predmet.bodovi DESC;
+
+SELECT
+*
+FROM predmet
+ORDER BY 
+predmet.bodovi ASC, predmet.naziv DESC;
+--zad br 10</sql><sql name="SQL 12">SELECT 
+dosije.ime, 
+dosije.prezime, 
+dosije.datum_rodjenja
+FROM
+dosije
+WHERE
+dosije.datum_rodjenja &gt;= '09.11.1994' AND
+dosije.datum_rodjenja &lt;= '10.10.1995.';
+--zad br 11</sql><sql name="SQL 13">SELECT 
+ispitni_rok.oznaka_roka,
+count(ispit.id_predmeta) as 'broj polozenih',
+count(dosije.indeks) as 'broj studenata'
+FROM
+ispitni_rok
+JOIN
+ispit ON ispit.oznaka_roka = ispitni_rok.oznaka_roka
+JOIN
+dosije ON ispit.indeks = dosije.indeks
+WHERE
+ispitni_rok.godina_roka = '2015'
+GROUP BY 
+ispitni_rok.naziv;
+--zad br 12</sql><sql name="SQL 15">SELECT ime, prezime, id_predmeta, oznaka_roka, godina_roka
+FROM ispit, dosije
+WHERE oznaka_roka='jan' AND godina_roka=&quot;2015&quot;
+--zad br 13</sql><sql name="SQL 16">select avg(bodovi),oznaka_roka,godina_roka 
+FROM ispit
+where id_predmeta=&quot;1021&quot; AND godina_roka=&quot;2015&quot;
+--zad br 14
+</sql><sql name="SQL 17">SELECT count (ocena)
+from ispit
+where ocena&gt;='5'
+-zad br 15
+</sql><sql name="SQL 18">select avg(bodovi), indeks
+from ispit
+WHERE indeks='20130023'
+--zad br 16.</sql><sql name="SQL 19">SELECT avg(ocena), oznaka_roka, godina_roka
+from ispit
+where oznaka_roka=&quot;jan&quot; and godina_roka=&quot;2015&quot;
+--zad br 17
+</sql><current_tab id="16"/></tab_sql></sqlb_project>

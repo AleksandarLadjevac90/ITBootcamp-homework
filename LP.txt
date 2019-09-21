@@ -1,0 +1,19 @@
+package music;
+
+public class LP extends AlbumArtikal{
+	
+	private int tezina;
+	
+	LP(Album album, String izdavac, double cena, int kolicina, int tezina){
+		super(album, izdavac, cena, kolicina);
+		this.tezina = tezina;
+	}
+
+	public String ime() {
+		String s = this.album.getIzvodjac() + " - " + this.album.getNaziv() +
+				" (" + Integer.toString(this.tezina) + "[g] LP)"; 
+		return s;
+	}
+
+}
+

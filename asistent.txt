@@ -1,0 +1,21 @@
+package PetaSedmica;
+
+public class Asistent extends Nastavnik{
+
+	private String smerDoktorskihStudija;
+	
+	Asistent(String smerDoktorskihStudija, String ime, String prezime, int godinaRodjenja, 
+			int godinaZaposlenja, int plata, String omiljeniPredmet, 
+			int brojPredmeta){
+		
+		super(ime, prezime, godinaRodjenja, godinaZaposlenja, plata, 
+				omiljeniPredmet, brojPredmeta);
+		this.smerDoktorskihStudija = smerDoktorskihStudija;
+	}
+	
+	public String toString() {
+		String s = super.toString();
+		s += "Smer Doktorskih Studija: " + this.smerDoktorskihStudija + "\n";
+		return s;
+	}
+}

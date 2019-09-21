@@ -1,0 +1,73 @@
+package studentskaBaza;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+
+public class StudentMenadzer {
+	protected Database database;
+	
+	public StudentMenadzer(Database database) {
+		this.database = database;
+	}
+	
+	public void dodajStudenta(
+			int indeks,
+			String ime,
+			String prezime,
+			LocalDate datumUpisa,
+			LocalDate datumRodjenja,
+			String mestoRodjenja) throws SQLException {
+		String upit = "INSERT INTO dosije (" + 
+				"`indeks`," + 
+				"ime," + 
+				"prezime," + 
+				"datum_upisa," + 
+				"datum_rodjenja," + 
+				"mesto_rodjenja" + 
+				") VALUES (" + 
+				"?," + 
+				"?," + 
+				"?," + 
+				"?," + 
+				"?," + 
+				"?" + 
+				")";
+		
+		Connection connection = this.database.getConnection();
+		PreparedStatement statement = connection.prepareStatement(upit);
+		statement.setInt(1, indeks);
+		statement.setString(2, ime);
+		statement.setString(3, prezime);
+		statement.setObject(4, datumUpisa);
+		statement.setObject(5, datumRodjenja);
+		statement.setString(6, mestoRodjenja);
+		
+		statement.execute();
+	}
+	
+	public void izbrisatiNevalidneOcene() throws SQLException {
+		String upit = "DELETE FROM ispit"
+				+ " WHERE ocena < 5 OR ocena > 10";
+		Connection connection = this.database.getConnection();
+		Statement statement = connection.createStatement();
+		
+		statement.execute(upit);
+	}
+	
+	public void setDatumRodjenja(int indeks, LocalDate datumRodjenja) throws SQLException {
+		String upit = "UPDATE dosije"
+				+ " SET datum_rodjenja = ?"
+				+ " WHERE indeks = ?";
+		
+		Connection connection = this.database.getConnection();
+		PreparedStatement statement = connection.prepareStatement(upit);
+		
+		statement.setObject(1, datumRodjenja);
+		statement.setInt(2, indeks);
+		
+		statement.execute();
+	}
+}

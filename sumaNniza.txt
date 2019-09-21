@@ -1,0 +1,57 @@
+package prvaSedmica;
+
+import java.util.Scanner;
+
+public class opetTest {public static void main (String args[]) {
+	
+	Scanner scan = new Scanner(System.in);
+	int[][] a;
+	
+	System.out.println("Unesite broj redova 2D niza: ");
+	int n = scan.nextInt();
+	System.out.println("Unesite broj kolona 2D niza: ");
+	int m = scan.nextInt();
+	
+	a = new int[n][m];
+	
+	for (int i = 0; i < a.length; i++) {
+		for (int j = 0; j < a[i].length; j++) {
+			
+			a[i][j] = (int)Math.round(Math.random()*20);
+		}
+	}
+	
+	System.out.println("============================");
+	System.out.println("Vas 2D niz:");
+	twoDArrPrint(a);
+	
+	System.out.println("\nUnesite broj reda ciju sumu zelite da izracunate:");
+	int red = scan.nextInt();
+	System.out.println("Suma " + red + ". reda je: " + sumaReda(a, red));
+}
+
+static int sumaReda(int[][] a, int n) {
+	
+	int sum = 0;
+	for (int i = 0; i < a[n-1].length; i++) {
+		sum += a[n-1][i];
+	}
+	
+	return sum;
+}
+
+static void twoDArrPrint(int[][] a) {
+	
+	for (int i = 0; i < a.length; i++) {
+		for (int j = 0; j < a[i].length; j++) {
+			if (a[i][j] < 10) {
+				System.out.print(a[i][j] + " " + "   ||   ");
+			} else {
+				System.out.print(a[i][j] + "   ||   ");
+			}
+		}
+		System.out.println("");
+	}
+}
+
+}

@@ -1,0 +1,54 @@
+package sedmaSedmica;
+
+import java.util.Scanner;
+
+public class Sastojak {
+	private String naziv;
+	private double kolicina;
+	private String jedinicaMere;
+	
+	
+	public Sastojak(String naziv, double kolicina, String jedinicaMere) {
+		super();
+		this.naziv = naziv;
+		this.kolicina = kolicina;
+		this.jedinicaMere = jedinicaMere;
+		
+	}
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public double getKolicina() {
+		return kolicina;
+	}
+
+	public String getJedinicaMere() {
+		return jedinicaMere;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+
+	public void setKolicina(double kolicina) {
+		this.kolicina = kolicina;
+	}
+
+	public void setJedinicaMere(String jedinicaMere) {
+		this.jedinicaMere = jedinicaMere;
+	}
+	
+	@Override
+	public String toString() {
+		return "Sastojak: [naziv Sastojka=" + naziv + ", Kolicina=" + kolicina + ", jedinica mere g=" + jedinicaMere + "]";
+	}
+   
+	public boolean dozvoljenSastojak(String naziv) {
+		if(naziv== "jaje"|| naziv=="brasno"|| naziv=="puter"|| naziv=="secer")
+			return true;
+		else return false;
+	}
+	
+}

@@ -1,0 +1,47 @@
+package PetaSedmica;
+
+public class Nastavnik extends Zaposleni{
+	
+	private String omiljeniPredmet;
+	private String[] predmeti;
+	private int counter;
+	
+	Nastavnik(String ime, String prezime, int godinaRodjenja, 
+			int godinaZaposlenja, int plata, 
+			String omiljeniPredmet, int brojPredmeta) {
+		super(ime, prezime, godinaRodjenja, godinaZaposlenja, plata);
+		this.omiljeniPredmet = omiljeniPredmet;
+		this.predmeti = new String[brojPredmeta];
+		this.predmeti[0] = omiljeniPredmet;
+		counter = 1;
+	}
+
+	public void dodajPredmet(String predmet) {
+		if(counter < this.predmeti.length) {
+			this.predmeti[counter] = predmet;
+			counter++;
+		} else {
+			String[] S = new String[this.predmeti.length*2];
+			for(int i = 0; i < this.predmeti.length; i++) {
+				S[i] = this.predmeti[i];
+			}
+			this.predmeti = S;
+			S = null;
+			this.predmeti[counter] = predmet;
+			counter++;
+		}
+	}
+	
+	public String toString() {
+		
+		String s = super.toString();
+		s += "Omiljni Predmet: " + this.omiljeniPredmet + "\n";
+	
+		s += "Lista predmeta koje dato lice predaje:\n"; 
+		for (int i = 0; i < this.counter; i++) {
+			s += "=> " + this.predmeti[i] + "\n";
+		}
+		
+		return s;
+	}
+}

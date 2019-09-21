@@ -1,0 +1,17 @@
+package aritmetika;
+
+public class Oduzimanje extends BinarnaOperacija{
+
+	public Oduzimanje(Izraz levi, Izraz desni) {
+		super(levi, desni);
+	}
+
+	double izracunaj() {
+		return levi.izracunaj() - desni.izracunaj();
+	}
+	
+	public String toString() {
+		return Double.toString(this.izracunaj());
+	}
+
+}

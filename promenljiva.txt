@@ -1,0 +1,21 @@
+package aritmetika;
+
+public class Promenljiva extends Izraz{
+	
+	private String ime;
+	private double vrednost;
+	
+	public Promenljiva(String ime, double vrednost) {
+		this.ime = ime;
+		this.vrednost = vrednost;
+	}
+	
+	double izracunaj() {
+		return this.vrednost;
+	}
+	
+	public String toString() {
+		return Double.toString(this.vrednost);
+	}
+	
+}

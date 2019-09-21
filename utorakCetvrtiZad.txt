@@ -1,0 +1,52 @@
+package paket;
+
+import java.util.Scanner;
+
+public class utorakCetvrtiZad {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+
+		int[] a;
+		System.out.println("Unesite broj elemenata niza: ");
+		int n = scan.nextInt();
+		a = new int[n];
+		
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("Unesite a[" + i + "]: ");
+			a[i] = scan.nextInt();
+		}
+		
+		System.out.println("=====================================");
+		boolean b = duplikati(a);
+		
+		if (b == true) { 
+			System.out.println("U datom nizu postoje duplikati.");
+		} else {
+			System.out.println("U datom nizu ne postoje duplikati.");
+		}
+	}
+	
+	static boolean duplikati(int[] a) {
+		
+		boolean postoji = false;
+		
+		for (int i = 0; i < a.length; i++) {
+			
+			int temp = a[i];
+			
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[j] == temp) {
+					postoji = true;
+				}
+			}
+			
+			if (postoji == true) {
+				break;
+			}
+		}
+		
+		return postoji;
+	}
+
+}

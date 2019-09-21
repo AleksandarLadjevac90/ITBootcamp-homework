@@ -1,0 +1,9 @@
+package sedmaSedmica;
+
+public class TestTorta {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

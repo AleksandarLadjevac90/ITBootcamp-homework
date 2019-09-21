@@ -1,0 +1,26 @@
+package prvaSedmica;
+
+import java.util.Scanner;
+
+public class opetTest {public static void main (String args[]) {
+	
+	Scanner scan = new Scanner(System.in);
+	
+	System.out.println("Unesite string: ");
+	String str = scan.nextLine();
+	String kontra = "";
+	
+	String str1 = str.replaceAll("\\s+","").toLowerCase();
+	
+	for (int i = str1.length() - 1; i >= 0; i--) {
+		kontra += str1.charAt(i);
+	}
+	
+	if (str1.equals(kontra) == true) {
+		System.out.println("Jeste palindrom.");
+	} else {
+		System.out.println("Nije palindrom.");
+	}
+	
+}
+}

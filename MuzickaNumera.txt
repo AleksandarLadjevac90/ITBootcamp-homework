@@ -1,0 +1,29 @@
+package PetaSedmica;
+
+public class MuzickaNumera {
+	private String naziv;
+	private String izvodjac;
+	private String trajanje;
+	
+	
+	public MuzickaNumera(String n, String iz, String tr) {
+		 naziv = n;
+		izvodjac = iz;
+		trajanje = tr;
+	}
+	public String getNaziv() {
+		return naziv;
+	}
+	public String getIzvodjac() {
+		return izvodjac;
+	}
+	public String getTrajanje() {
+		return trajanje;
+	}
+	@Override
+	public String toString() {
+		return "MuzickaNumera [naziv: " + naziv + ", izvodjac: " + izvodjac + ", trajanje: " + trajanje + "]";
+	}
+	
+	
+}

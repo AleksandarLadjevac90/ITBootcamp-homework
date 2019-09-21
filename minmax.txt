@@ -1,0 +1,67 @@
+package prvaSedmica;
+
+import java.util.Scanner;
+
+public class opetTest {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		int[][] a;
+		
+		System.out.println("Unesite broj redova 2D niza: ");
+		int n = scan.nextInt();
+		System.out.println("Unesite broj kolona 2D niza: ");
+		int m = scan.nextInt();
+		
+		a = new int[n][m];
+		
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < a[i].length; j++) {
+				
+				
+			}
+		}
+		
+		System.out.println("==========================");
+		System.out.println("Vas 2D niz:");
+		twoDArrPrint(a);
+		
+		int[] b = minMax(a);
+		System.out.println("min: " + b[0]);
+		System.out.println("max: " + b[1]);
+		
+	}
+	
+	static int[] minMax(int[][] a) {
+		
+		int[] minMax = {a[0][0], a[0][0]};
+		
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < a[i].length; j++) {
+				if (a[i][j] < minMax[0]) {
+					minMax[0] = a[i][j];
+				}
+				if (a[i][j] > minMax[1]) {
+					minMax[1] = a[i][j];
+				}
+			}
+		}
+		
+		return minMax;
+	}
+	
+	static void twoDArrPrint(int[][] a) {
+		
+		for (int i = 0; i < a.length; i++) {
+			for (int j = 0; j < a[i].length; j++) {
+				if (a[i][j] < 10) {
+					System.out.print(a[i][j] + " " + "   ||   ");
+				} else {
+					System.out.print(a[i][j] + "   ||   ");
+				}
+			}
+			System.out.println("");
+		}
+	}
+	
+}

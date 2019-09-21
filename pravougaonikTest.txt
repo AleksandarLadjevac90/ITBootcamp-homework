@@ -1,0 +1,22 @@
+package cetvrtaSedmica;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Pravougaonik A = new Pravougaonik(2, 3, "Ladjevac");
+		
+		System.out.println(A.getA());
+		System.out.println(A.getB());
+		
+		A.ispisiPravougaonik();
+		
+		Pravougaonik kvadrat = new Pravougaonik(6, "Aleksandar");
+
+		System.out.println(kvadrat.getA());
+		System.out.println(kvadrat.getB());
+		
+		kvadrat.ispisiPravougaonik();
+	}
+
+}

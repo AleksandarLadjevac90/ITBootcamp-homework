@@ -1,0 +1,85 @@
+package cetvrtaSedmica;
+
+public class Trougao {
+	private Tacka t;
+	private double a = -1;
+	private double b = -1;
+	private double c = -1;
+	Trougao( double a, double b, double c, double x, double y){
+		if (a > b + c) {
+			System.out.print("Trougao sa stranicama " + a + ", " + b +", " + c);
+			System.out.print(" ne postoji jer " + b + " + " + c + " nije vece od "+ a + "\n");
+		} else if (b > a + c) {
+			System.out.print("Trougao sa stranicama " + a + ", " + b +", " + c);
+			System.out.print(" ne postoji jer " + a + " + " + c + " nije vece od "+ b + "\n");
+		} else if (c > b + a) {
+			System.out.print("Trougao sa stranicama " + a + ", " + b +", " + c);
+			System.out.print(" ne postoji jer " + b + " + " + a + " nije vece od "+ c + "\n");
+		} else if ((a <= 0) || (b <= 0) || (c <= 0)) {
+			System.out.println("Stranice moraju da budu pozitivni brojevi.");
+		} else {
+			this.a = a;
+			this.b = b;
+			this.c = c;
+			this.t = new Tacka(x,y);
+		}
+	}
+	public boolean jednakokraki() {
+		if ((this.a == this.b) || (this.a == this.c) || (this.c == this.b)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public double obim() {
+		return this.a + this.b + this.c;
+	}
+	
+	public double povrsina() {
+		double s = (this.a + this.b + this.c)/2;
+		return Math.sqrt(s*(s-this.a)*(s-this.b)*(s-this.c));
+	}
+	public void menjanjeStranica(double a, double b, double c) {
+		if (a > b + c) {
+			System.out.print("Trougao sa stranicama " + a + ", " + b +", " + c);
+			System.out.print(" ne postoji jer " + b + " + " + c + " nije vece od "+ a + "\n");
+		} else if (b > a + c) {
+			System.out.print("Trougao sa stranicama " + a + ", " + b +", " + c);
+			System.out.print(" ne postoji jer " + a + " + " + c + " nije vece od "+ b + "\n");
+		} else if (c > b + a) {
+			System.out.print("Trougao sa stranicama " + a + ", " + b +", " + c);
+			System.out.print(" ne postoji jer " + b + " + " + a + " nije vece od "+ c + "\n");
+		} else if ((a <= 0) || (b <= 0) || (c <= 0)) {
+			System.out.println("Stranice moraju da budu pozitivni brojevi.");
+		} else {
+			this.a = a;
+			this.b = b;
+			this.c = c;
+		}
+	}
+	public boolean istaPocetnaTacka(Trougao A) {
+		if ((this.t.getX() == A.t.getX()) && (this.t.getY() == A.t.getY())){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void ispis() {
+		if ((a == -1) || (b == -1) || (c == -1)) {
+			System.out.println("Trougao nije ispisan pravilno.");
+		} else {
+			System.out.println("======================================================");
+			System.out.println("Trougao sa pocetnom tackom " + this.t.ispis());
+			System.out.println("Stranice Trougla: " + a + " " + b + " " + c);
+			System.out.println("Povrsina i obim: P = " + this.povrsina() + ", O = " + this.obim());
+			System.out.println("======================================================");
+		}
+	}
+	public void pocetnaTacka(double x, double y) {
+		this.t.setX(x);
+		this.t.setY(y);
+	}
+}
+

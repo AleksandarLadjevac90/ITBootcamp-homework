@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Anum {
+	
+	public static void main (String args[]) {
+		
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Unesite velicinu niza A:");
+		int n = scan.nextInt();
+		int[] A = new int[n];
+		
+		for (int i = 0; i < A.length; i++) {
+			System.out.println("Unesite A[" + i + "]:");
+			A[i] = scan.nextInt();
+		}
+		System.out.println("============================");
+		
+		System.out.println("Unesite velicinu niza B:");
+		int m = scan.nextInt();
+		int[] B = new int[m];
+		
+		for (int i = 0; i < B.length; i++) {
+			System.out.println("Unesite B[" + i + "]:");
+			B[i] = scan.nextInt();
+		}
+		System.out.println("============================");
+ 		
+		if (podskup(A,B) == true) {
+			System.out.println("A jeste podskup skupa B.");
+		} else {
+			System.out.println("A nije podskup skupa B.");
+		}
+	}
+	
+	public static boolean podskup(int[] A, int B[]) {
+		
+		boolean x = false;
+		for(int i = 0; i < A.length; i++) {
+			x = false;
+			for(int j = 0; j < B.length; j++) {
+				if (A[i] == B[j]) {
+					x = true;
+				}
+			}
+			if(x == false) {
+				break;
+			}
+		}
+		
+		return x;
+	}
+}

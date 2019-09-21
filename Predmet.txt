@@ -1,0 +1,21 @@
+package fakultet;
+
+public class Predmet {
+	
+	private String ime;
+	private int id;
+	static private int x = 0;
+	
+	Predmet(String ime){
+		this.ime = ime;
+		x++;
+		this.id = x;
+	}
+	
+	public String getIme() {
+		return ime;
+	}
+	public int getId() {
+		return id;
+	}
+}

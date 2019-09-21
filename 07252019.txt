@@ -1,0 +1,31 @@
+package zaDomace;
+
+import java.util.Scanner;
+
+public class domaciTreciDanPrviZadatak {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int m,n,sum=0;
+		 
+		 
+		System.out.print("Unesi m:");
+		m =sc.nextInt();
+		 
+		System.out.print("Unesi n:");
+		n =sc.nextInt();
+		 
+		if(n<m) { int t = m; m=n; n=t; }
+		 
+		for (int i = m+1; i<n ;i++)
+		{
+		if(i%2 == 0) {sum+=i;
+		System.out.println(i);
+		
+		}}
+		 
+		System.out.print("Zbir unetih brojeva je "+m+" i broja "+n+" je: "+sum);
+	 
+		}
+	}
+ 

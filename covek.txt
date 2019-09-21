@@ -1,0 +1,22 @@
+package PetaSedmica;
+
+public class Covek {private String ime;
+private String prezime;	
+private int godinaRodjenja;
+
+Covek(String ime, String prezime, int godinaRodjenja) {
+	this.ime = ime;
+	this.prezime= prezime ;	
+	this.godinaRodjenja = godinaRodjenja;
+}
+
+public String toString() {
+	String s = "";
+	s += "Ime: " + this.ime + "\n" + "Prezime: " + this.prezime + "\n"
+			+ "Godina Rodjenja: " + Integer.toString(this.godinaRodjenja) + "\n";
+	return s;
+	}
+}
+
+
+

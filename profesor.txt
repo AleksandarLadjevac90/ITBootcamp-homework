@@ -1,0 +1,21 @@
+package PetaSedmica;
+
+public class Profesor extends Nastavnik{
+
+	private String titula;
+	
+	Profesor(String titula, String ime, String prezime, int godinaRodjenja, 
+			int godinaZaposlenja, int plata, String omiljeniPredmet, 
+			int brojPredmeta){
+		
+		super(ime, prezime, godinaRodjenja, godinaZaposlenja, plata,
+				omiljeniPredmet, brojPredmeta);
+		this.titula = titula;
+	}
+	
+	public String toString() {
+		String s = super.toString();
+		s += "Titula: " + this.titula + "\n";
+		return s;
+	}
+}

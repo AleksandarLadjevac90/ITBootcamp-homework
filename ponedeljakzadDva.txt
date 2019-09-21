@@ -1,0 +1,50 @@
+package paket;
+
+import java.util.Scanner;
+
+public class nizDomaciDva {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int[] a = {-1,2,4,87,2,-15};
+		
+		int[] b = minMax(a);
+		
+		System.out.println("Minimum niza je: " + b[1]);
+		System.out.println("Maksimum niza je: " + b[0]);
+	}
+	
+	static int[] minMax(int[] a) {
+		
+		sort(a);
+		int[] arr = {a[0], a[a.length-1]};
+		return arr;
+	}
+	
+	static int[] sort(int[] a) {
+		
+		int index = 0;
+		int temp = 0;
+		
+		for (int i = 0; i < a.length; i++) {
+			
+			int min = a[i];
+			for (int j = i + 1; j < a.length; j++) {
+				if (a[j] > min) {
+					min = a[j];
+					index = j;
+				}
+			}
+			
+			if (min != a[i]) {
+				temp = a[i];
+				a[i] = min;
+				a[index] = temp;
+			}
+		}
+		
+		return a;
+	}
+
+}

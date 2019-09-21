@@ -1,0 +1,25 @@
+import java.sql.SQLException;
+
+public class FudbalskiSavezTest {
+
+	public static void main(String[] args) {
+		String connectionString = "jdbc:sqlite:C:/Users/Ladjevac/Desktop/FudbalskiSavez.db";
+		FudbalskiSavez savez = new FudbalskiSavez(connectionString);
+		savez.connect();
+		
+		
+		try {
+			
+			savez.imeFudbaleraTim();
+		    savez.gradoviGdeJeIgraoFudbaler(1);
+			savez.fudbaleriManchestera();
+			savez.fudbalerNajviseGolova(); 
+			savez.kartoni();
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		savez.disconnect();
+	}
+	
+}

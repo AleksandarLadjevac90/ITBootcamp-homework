@@ -1,0 +1,55 @@
+package sedmaSedmica;
+
+public class Artikal {
+	private String ime;
+	private double cena;
+	private int broj;
+	private int popust;
+	public Artikal(String ime, double cena, int broj) {
+		this.ime = ime;
+		this.cena = cena;
+		this.broj = broj;
+		this.popust = 0;
+	}
+	public boolean daLiJeNaAkciji() {
+		if(this.popust > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public String toString() {
+		String s = this.ime + " - " + Double.toString(this.cena) + " din  (" + Integer.toString(this.broj) + ") - "+ Integer.toString(this.popust) + "%";
+		return s;
+ 	}
+	
+	
+	public String getIme() {
+		return ime;
+	}
+	public void setIme(String ime) {
+		this.ime = ime;
+	}
+	public double getCena() {
+		return cena;
+	}
+	public double getCenaSaPopustom() {
+		return cena*(this.popust/100);
+	}
+	public void setCena(int cena) {
+		this.cena = cena;
+	}
+	public int getBroj() {
+		return broj;
+	}
+	public void setBroj(int broj) {
+		this.broj = broj;
+	}
+	public int getPopust() {
+		return popust;
+	}
+	public void setPopust(int popust) {
+		this.popust = popust;
+	}
+	
+}

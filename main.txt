@@ -1,0 +1,105 @@
+package noviPaket;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner in = new Scanner(System.in);
+	
+		System.out.println("Unesite koliko objekata zelite da napravite: ");
+		int n = in.nextInt();
+		Osoba[] nizOsoba = new Osoba[n];
+		in.nextLine();
+		
+		for(int i = 0; i < n; i++) {
+			boolean opet = false;
+			do {
+				//in.nextLine();
+				System.out.println("Unesite ime:");
+				String ime = in.nextLine();
+				System.out.println("Unesite prezime:");
+				String prezime = in.nextLine();
+				System.out.println("Unesite adresu:");
+				String adresa = in.nextLine();
+				System.out.println("Unesite (1) ako znate broje rodjenja osobe ili (2) ako znate JMBG:");
+				int izbor = in.nextInt();
+				in.nextLine();
+		
+				switch(izbor) {
+					case 1:
+						System.out.println("Unesite broj dana u mesecu kada se osoba rodila:");
+						int dan = in.nextInt();
+						System.out.println("Unesite broj meseca u kojem se osoba rodila:");
+						int mesec = in.nextInt();
+						System.out.println("Unesite godinu rodjenja:");
+						int godina = in.nextInt();
+						in.nextLine();
+						Datum d = new Datum(dan, mesec, godina);
+						nizOsoba[i] = new OsobaD(ime, prezime, adresa, d);
+						break;
+					case 2:
+						System.out.println("Unesite JMBG osobe:");
+						String JMBG = in.nextLine();
+						String[] s = {"", "", ""};
+						int[] nizRodj = new int[3];
+						for(int j = 0; j < 2; j++) {
+							s[0] += JMBG.charAt(j);
+							s[1] += JMBG.charAt(j+2);
+						}
+						if(JMBG.charAt(4) == '0') {
+							s[2] += '2';
+						} else {
+							s[2] += '1';
+						}
+						for(int j = 4; j < 7; j++) {
+							s[2] += JMBG.charAt(j);
+						}
+						
+						for(int j = 0; j < 3; j++) {
+							nizRodj[j] = Integer.parseInt(s[j]);
+						}
+						Datum d2 = new Datum(nizRodj[0], nizRodj[1], nizRodj[2]);
+						nizOsoba[i] = new OsobaD(ime, prezime, adresa, d2);
+						break;
+					default:
+						opet = true;
+						System.out.println("Pogresan unos!");
+				}
+			} while (opet == true);
+				System.out.println("===============================");
+		}
+		
+		System.out.println("************************************");
+		System.out.println("Unesite danasnji datum(u formatu dd.mm.gggg.):");
+		String dd = in.nextLine();
+		String[] dNiz = dd.split("[.]");
+		if(dNiz[2].charAt(0) == '0') {
+			dNiz[2] += '2';
+		} else {
+			dNiz[2] += '1';
+		}
+		final Datum danasnjiDatum = 
+				new Datum(Integer.parseInt(dNiz[0]), Integer.parseInt(dNiz[1]), Integer.parseInt(dNiz[2]));
+		
+		for(int i = 0; i < n; i++) {
+			System.out.println(nizOsoba[i].toString());
+			int nb = nizOsoba[i].numeroloskiBroj();
+			System.out.println("Numeroloski broj: " + nb);
+			if(nb != 7) {
+				String met = nizOsoba[i].metabolizam(danasnjiDatum);
+				boolean nemaNula = true;
+				for(int j = 0; j < met.length(); j++) {
+					if(met.charAt(j) == '0') {
+						nemaNula = false;
+					}
+				}
+				if(nemaNula == true) {
+					System.out.println("Broj 'trouglica' za danasnji dan: " + met);
+				}
+			}
+			
+		}
+	}
+
+}

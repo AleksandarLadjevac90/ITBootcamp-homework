@@ -1,0 +1,45 @@
+package paket;
+
+import java.util.Scanner;
+
+public class domacinizUto {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		
+		int[] a;
+		
+		System.out.println("Unesite broj elemenata niza: ");
+		int n = scan.nextInt();
+		
+		a = new int[n];
+		
+		for (int i = 0; i < a.length; i++) {
+			System.out.println("Unesite a[" + i + "]:");
+			a[i] = scan.nextInt();
+		}
+		
+		System.out.println("=====================================");
+		
+		System.out.println("Unesite broj koji zelite da proverite da li je u nizu: ");
+		int c = scan.nextInt();
+		
+		boolean postoji = false;
+		int index = -1;
+		
+		for (int i = 0; i < a.length; i++) {
+			if (c == a[i]) {
+				postoji = true;
+				index = i;
+				break;
+			}
+		}
+		
+		if (postoji == true) {
+			System.out.println("Broj postoji u nizu, i indeks mu je: i = " + index);
+		} else {
+			System.out.println("Broj ne postoji u nizu!");
+		}
+	} 
+
+}
