@@ -1,0 +1,43 @@
+package deveta;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+	
+	public static void main(String[] args){
+		List<String> svaDeca = new ArrayList<String>();
+		List<String> dobraDeca = new ArrayList<String>();
+		svaDeca.add("Aleksandar");
+		svaDeca.add("Mirko");
+		svaDeca.add("Arsenije");
+		svaDeca.add("Nemanja");
+		svaDeca.add("Dragan");
+		svaDeca.add("Nikola");
+		dobraDeca.add("Arsenije");
+		dobraDeca.add("Arsenije");
+		dobraDeca.add("Arsenije");
+		dobraDeca.add("Aleksandar");
+		dobraDeca.add("Aleksandar");
+		HashMap<String, Integer> A = dobraDecaHashMap(svaDeca, dobraDeca);
+		for (String i : A.keySet()) {
+			if(A.get(i) > 1) {
+				System.out.println("Ime: " + i + " | Broj dobrih dela: " + A.get(i));
+			}
+		}
+	}
+	
+	public static HashMap<String, Integer> dobraDecaHashMap(List<String> svaDeca, List<String> dobraDeca) {
+		HashMap<String, Integer> hm = new HashMap<String, Integer>();
+		for(int i = 0; i < svaDeca.size(); i++) {
+			hm.put(svaDeca.get(i), 0);
+		}
+		for(int i = 0; i < dobraDeca.size(); i++) {
+			int value = hm.get(dobraDeca.get(i));
+			value++;
+			hm.put(dobraDeca.get(i), value);
+		}
+		return hm;
+	}
+	
+}

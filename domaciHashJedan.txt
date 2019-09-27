@@ -1,0 +1,23 @@
+package deveta;
+
+import java.util.TreeMap;
+
+public class HasDomaciJedan {
+	public static void sortirajPoKljucu(TreeMap<String, Integer> mapa) {
+		while(!mapa.isEmpty()) {
+			System.out.println(mapa.keySet());
+			return;
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		TreeMap<String, Integer> mapa = new TreeMap<String, Integer>();
+		mapa.put("Aleksandar", 29);
+		mapa.put("Dejan", 29);
+		mapa.put("Stevan", 23);
+		mapa.put("Stavra", 37);
+		sortirajPoKljucu(mapa);
+	}
+
+}

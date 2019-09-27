@@ -1,0 +1,35 @@
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+	
+	public static void main(String[] args){
+		int[] b = {2,3,5,4,5,2,4,3,5,2,4,4,2};
+		List<Integer> a = neparniBrojDuplikata(b);
+		for(int i = 0; i < a.size(); i++) {
+			System.out.println(a.get(i));
+		}
+	}
+	
+	public static List<Integer> neparniBrojDuplikata(int[] a) {
+		HashMap<Integer, Integer> c = new HashMap<Integer, Integer>();
+		List<Integer> l = new ArrayList<Integer>();
+		for(int i = 0; i < a.length; i++) {
+			if(c.get(a[i]) == null) {
+				c.put(a[i], 1);
+			} else {
+				int value = c.get(a[i]);
+				value++;
+				c.put(a[i], value);
+			}
+		}
+		for (Integer i : c.keySet()) {
+			  if(c.get(i)%2 != 0) {
+				  l.add(i);
+			  }
+		}
+		return l;
+	}
+	
+}
